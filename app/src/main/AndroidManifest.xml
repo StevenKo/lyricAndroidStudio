@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kosbrother.lyric"
+    android:versionCode="22"
+    android:versionName="1.9.9"
+    android:installLocation="auto">
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppBaseTheme" >
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".MainTabActivty"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.TabHotActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.TabSingerActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.TabSearchActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.TabCollectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name=".NewAlbumActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name=".HotAlbumActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name=".HotSongActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.SingerCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.CategoryWayResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.SingerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.AlbumActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.SongActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.HotSingerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+
+        <activity
+            android:name="com.kosbrother.lyric.TopListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.TopListSongsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+        <activity
+            android:name="com.kosbrother.lyric.RecommendSongActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"
+            >
+        </activity>
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+
+
+        <activity
+            android:name="com.vpadn.widget.VpadnActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|keyboard|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+
+        <!--HODo Ad 設定  -->
+        <activity android:name="com.hodo.ADActivity"/>
+        <activity
+            android:name="com.hodo.SplashaActivity"
+            android:theme="@android:style/Theme.Translucent"/>
+        <activity
+            android:name="com.hodo.SVideoActivity"
+            android:theme="@android:style/Theme.Translucent"
+            android:configChanges="orientation"/>
+
+
+        <activity android:name="com.googleing.zxinging.client.android.CaptureActivity"
+            android:finishOnTaskLaunch = "true"
+            android:clearTaskOnLaunch = "true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="com.googleing.zxinging.client.android.SCAN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.kosbrother.lyric" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <permission android:name="com.kosbrother.lyric.pushnotification.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.kosbrother.lyric.pushnotification.permission.C2D_MESSAGE" />
+
+    <!-- App receives GCM messages. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- GCM connects to Google Services. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <!-- <uses-permission android:name="android.permission.WAKE_LOCK" />  -->
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> -->
+
+</manifest>

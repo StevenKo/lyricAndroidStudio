@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="center_horizontal">
+    
+    <LinearLayout android:id="@+id/layout_progress"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        >
+        <ProgressBar 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	/>        
+    </LinearLayout>
+    
+    <LinearLayout 
+   	 	android:id="@+id/layout_reload"
+   	 	android:layout_width="fill_parent"
+   	 	android:layout_height="fill_parent"
+     	android:gravity="center"
+     	android:visibility="gone"
+     	android:background="@color/main_color_grey_dark"
+     	>
+	    <TextView 
+	        android:layout_width="wrap_content"
+   	 		android:layout_height="wrap_content"
+   	 		android:text="無法連線"
+   	 		android:textSize="23dp"
+   	 		android:layout_marginLeft="5dp"
+   	 		android:textColor="#6E6E6E"
+	        />
+	    <Button  android:id="@+id/button_reload"
+	       android:layout_width="wrap_content"
+   	 	   android:layout_height="wrap_content"
+   	 	   android:layout_marginLeft="5dp"
+   	 	   android:text="重試"
+	        />
+	</LinearLayout>
+    
+    <com.taiwan.imageload.LoadMoreGridView
+        android:id="@+id/grid_loadmore"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#FFFFFF"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+    
+    <LinearLayout 
+   	 	android:id="@+id/load_more_grid"
+   	 	android:layout_width="fill_parent"
+   	 	android:layout_height="wrap_content"
+     	android:background="#FFFFFF"
+     	android:gravity="center"
+     	android:layout_weight="0"
+     	>
+
+	    <TextView 
+	        android:layout_width="wrap_content"
+   	 		android:layout_height="wrap_content"
+   	 		android:text="下載中..."
+	        />
+	    <ProgressBar
+	        android:id="@+id/load_more_progressBar"
+	        android:layout_width="36dp"
+	        android:layout_height="36dp"
+	        android:layout_centerInParent="true"
+	        android:indeterminate="true"
+	        android:indeterminateDrawable="@drawable/costum_progress_bar"
+	        android:padding="3dp"
+	        android:visibility="visible"
+	        />
+	</LinearLayout>
+	
+    <LinearLayout 
+   	 	android:id="@+id/layout_no_data"
+   	 	android:layout_width="fill_parent"
+   	 	android:layout_height="fill_parent"
+     	android:gravity="center"
+     	android:visibility="gone"
+     	android:background="@color/main_color_grey_dark"
+     	>
+	    <ImageView 
+	       android:layout_width="80dp"
+   	 	   android:layout_height="80dp"
+   	 	   android:src="@drawable/app_icon_black" 
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content"
+   	 		android:layout_height="wrap_content"
+   	 		android:text="目前無資料"
+   	 		android:textSize="23dp"
+   	 		android:layout_marginLeft="5dp"
+   	 		android:textColor="#6E6E6E"
+	        />
+	</LinearLayout>
+	
+    <LinearLayout
+        android:id="@+id/adonView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        />
+
+</LinearLayout>

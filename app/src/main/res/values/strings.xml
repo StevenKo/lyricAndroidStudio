@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">歌曲王國</string>
+    
+    <string name="menu_introduce">簡介</string>
+    <string name="menu_collect">收藏</string>
+    <string name="menu_collect_song">收藏歌曲</string>
+    <string name="menu_collect_album">收藏專輯</string>
+    <string name="menu_collect_cancel">取消收藏</string>
+   
+    <string name="likes">喜歡</string>
+    <string name="time">長度</string>
+    <string name="views">觀看次數</string>
+    <string name="launch">發佈時間</string>
+    
+    <string name="about_us_string">關於我們</string>
+    <string name="about_us">嗨, \n\n音樂頻道是一個收集熱門Youtube音樂頻道的第三方App軟體, \n\n我們並不擁有這些影音版權. 如果您的頻道不希望出現在此App, 請Email讓我們知道. \n\n感謝您. \n\nEmail: brotherkos\@gmail.com</string>
+    <string name="yes_string">確定</string>
+    
+    <string name="recommend_url">https://play.google.com/store/apps/developer?id=KosBrother</string>
+    
+    <string name="singer_introduce_title">歌手簡介</string>
+    <string name="album_introduce_title">專輯簡介</string>
+    
+    <string name="reminder">小提醒</string>
+    <string name="delete_item_reminder">\n有收藏物件時,長按可以刪除收藏物件哦！</string>
+    <string name="reminder_next">下次再提醒</string>
+    <string name="do_not_reminder">不要再提醒</string>
+	
+    <!-- for vpon -->
+    <string name="msg_bulk_mode_scanned">Bulk mode: barcode scanned and saved</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="msg_default_contents">Contents</string>
+    <string name="msg_default_format">Format</string>
+    <string name="msg_default_meta">Metadata</string>
+    <string name="msg_default_mms_subject">Place a barcode inside the viewfinder rectangle to scan it.</string>
+    <string name="msg_default_status">Place a barcode inside the viewfinder rectangle to scan it.</string>
+    <string name="msg_default_time">Time</string>
+    <string name="msg_default_type">Type</string>
+    <string name="msg_encode_barcode_failed">Could not generate the requested barcode.</string>
+    <string name="msg_encode_contents_failed">Could not encode a barcode from the data provided.</string>
+    <string name="msg_intent_failed">Sorry, the requested application could not be launched. The barcode contents may be invalid.</string>
+    <string name="msg_loading_apps">Loading list of applications\u2026</string>
+    <string name="msg_not_our_results">You are leaving this application. The search results you will see are not related to this application.</string>
+    <string name="msg_redirect">Redirect</string>
+    <string name="msg_sbc_book_not_searchable">Sorry, this book is not searchable.</string>
+    <string name="msg_sbc_failed">Sorry, the search encountered a problem.</string>
+    <string name="msg_sbc_no_page_returned">No page returned</string>
+    <string name="msg_sbc_page">Page</string>
+    <string name="msg_sbc_searching_book">Searching book\u2026</string>
+    <string name="msg_sbc_snippet_unavailable">Snippet not available</string>
+    <string name="msg_sbc_unknown_page">Unknown page</string>
+    <string name="msg_share_explanation">You can share data by displaying a barcode on your screen and scanning it with another phone.</string>
+    <string name="msg_share_subject_line">Here are the contents of a barcode I scanned</string>
+    <string name="msg_share_text">Or type some text and press Enter</string>
+    <string name="msg_unmount_usb">Sorry, the SD card is not accessible.</string>
+
+    <string name="hello">Hello World, LoadMoreListView!</string>
+    <string name="pull_to_refresh_pull_label">Pull to refresh...</string>
+    <string name="pull_to_refresh_release_label">Release to refresh...</string>
+    <string name="pull_to_refresh_refreshing_label">Loading...</string>
+    <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
+
+
+</resources>

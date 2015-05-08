@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    >
+    
+    <LinearLayout
+		android:id="@+id/searchTextLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="50dp"
+		android:orientation="horizontal"
+		android:layout_marginTop="10dip"
+		android:layout_marginLeft="30dip"
+		android:layout_marginRight="30dip"
+		android:background="@drawable/edit_search_background"
+		android:gravity="center_vertical"
+		>
+		 
+		<EditText
+		android:id="@+id/edittext_search"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:layout_margin="2dp"
+		android:hint="輸入關鍵文字"
+		android:textSize="18dp"
+		android:maxLines="1"
+		android:imeOptions="actionSearch"
+		/>
+		
+		<ImageView
+		android:id="@+id/imageview_search"
+		android:layout_alignRight="@id/edittext_search"
+		android:layout_width="28dp"
+		android:layout_height="28dp"
+		android:layout_marginRight="10dp"
+		android:src="@drawable/icon_search"
+		/>
+		 
+   </LinearLayout>
+   
+    <RadioGroup
+			    android:id="@+id/radiogroup_search"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    android:layout_marginLeft="30dip"
+			    android:layout_marginTop="10dp"
+			    >
+			    <!--第一個RadioButton -->
+			    <RadioButton
+			      android:id="@+id/radiobbutton_song_name"
+			      android:layout_width="wrap_content"
+			      android:layout_height="wrap_content"
+			      android:text="用歌名搜歌曲"
+			      android:checked="true"
+			      android:textSize="20dp"
+			    />
+			    <RadioButton
+			      android:id="@+id/radiobbutton_song_lyric"
+			      android:layout_width="wrap_content"
+			      android:layout_height="wrap_content"
+			      android:text="用歌詞搜歌曲"
+			      android:textSize="20dp"
+			    />
+			    <!--第二個RadioButton -->
+			    <RadioButton
+			      android:id="@+id/radiobutton_album"
+			      android:layout_width="wrap_content"
+			      android:layout_height="wrap_content"
+			      android:text="搜專輯"
+			      android:textSize="20dp"
+			      android:layout_marginTop="0dp"
+			    />
+			    <!--第三個RadioButton -->
+			    <RadioButton
+			      android:id="@+id/radiobutton_singer"
+			      android:layout_width="wrap_content"
+			      android:layout_height="wrap_content"
+			      android:text="搜歌手"
+			      android:textSize="20dp"
+			      android:layout_marginTop="0dp"
+			    />
+	</RadioGroup>
+    
+
+</LinearLayout>

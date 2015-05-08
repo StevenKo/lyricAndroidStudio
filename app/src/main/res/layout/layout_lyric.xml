@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+     >
+    
+    <LinearLayout android:id="@+id/layout_progress"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        >
+        <ProgressBar 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	/>        
+    </LinearLayout>
+    
+    <LinearLayout 
+   	 	android:id="@+id/layout_reload"
+   	 	android:layout_width="fill_parent"
+   	 	android:layout_height="fill_parent"
+     	android:gravity="center"
+     	android:visibility="gone"
+     	android:background="@color/main_color_grey_dark"
+     	>
+	    <TextView 
+	        android:layout_width="wrap_content"
+   	 		android:layout_height="wrap_content"
+   	 		android:text="無法連線"
+   	 		android:textSize="23dp"
+   	 		android:layout_marginLeft="5dp"
+   	 		android:textColor="#6E6E6E"
+	        />
+	    <Button  android:id="@+id/button_reload"
+	       android:layout_width="wrap_content"
+   	 	   android:layout_height="wrap_content"
+   	 	   android:layout_marginLeft="5dp"
+   	 	   android:text="重試"
+	        />
+	</LinearLayout>
+    
+	    
+	<ScrollView android:id="@+id/scrollview_lyric"
+	       android:layout_width="fill_parent"
+	       android:layout_height="0dp"
+	       android:layout_weight="1"
+	        >
+		    <TextView  android:id="@+id/textview_lyric"
+		        android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:layout_marginLeft="10dp"
+		    	android:layout_marginRight="10dp"
+		    	android:paddingTop="10dp"
+		    	android:paddingBottom="20dp"
+		    	android:text="tttt"
+		    	android:textSize="20dp"
+		    	android:textIsSelectable="true"
+		        />
+	</ScrollView>
+	
+</LinearLayout>

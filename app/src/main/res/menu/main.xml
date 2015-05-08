@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="設定"/> -->
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="關於我們"/>
+    <item
+        android:id="@+id/action_contact"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="聯絡我們"/>
+    <item
+        android:id="@+id/action_grade"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="給APP評分"/>
+
+</menu>
