@@ -9,6 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ChocoAdSDK" />
+            <option value="$PROJECT_DIR$/ChocoAdSDK/adlibrary" />
+            <option value="$PROJECT_DIR$/ChocoAdSDK/adlibrary/mopub-sdk" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

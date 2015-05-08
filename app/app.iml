@@ -133,5 +133,6 @@
     <orderEntry type="library" exported="" name="play-services-games-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="vpadn-sdk-obf426-82704102" level="project" />
+    <orderEntry type="module" module-name="ChocoAdSDK" exported="" />
   </component>
 </module>
