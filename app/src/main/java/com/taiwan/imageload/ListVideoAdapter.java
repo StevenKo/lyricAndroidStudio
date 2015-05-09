@@ -67,41 +67,12 @@ public class ListVideoAdapter extends BaseAdapter {
 	              
         TextView text = (TextView) vi.findViewById(R.id.text_news_list);
         ImageView image = (ImageView) vi.findViewById(R.id.image_news_list);
-        TextView textDate = (TextView) vi.findViewById(R.id.text_list_date);
-        TextView textViews = (TextView) vi.findViewById(R.id.text_list_views);
-        TextView textDuration = (TextView) vi.findViewById(R.id.text_list_duration);
-        TextView textLikes = (TextView) vi.findViewById(R.id.text_list_like);
-        
-        
-        
-//        String countString = Integer.toString(data.get(position).getViewCount());
-        int views = data.get(position).getViewCount();
-        textViews.setText(NumberFormat.getNumberInstance(Locale.US).format(views)+" "+activity.getResources().getString(R.string.views));
-        
-        int[] intTime = splitToComponentTimes(data.get(position).getDuration());
-        if(intTime[0]!=0){
-        	textDuration.setText(activity.getResources().getString(R.string.time)+":"+Integer.toString(intTime[0])+":"+Integer.toString(intTime[1])+":"+Integer.toString(intTime[2]));
-        }else{
-        	String timeSecond = "";
-        	if(intTime[2]<10){
-        		timeSecond = "0"+Integer.toString(intTime[2]);
-        	}else{
-        		timeSecond = Integer.toString(intTime[2]);
-        	}
-        	textDuration.setText(activity.getResources().getString(R.string.time)+":"+Integer.toString(intTime[1])+":"+timeSecond);
-        }
-        
-        if(data.get(position).getLikes()!=-1){
-        	textLikes.setText(Integer.toString(data.get(position).getLikes())+" "+activity.getResources().getString(R.string.likes));
-        }else{
-        	textLikes.setVisibility(View.GONE);
-        }
-        
+
+
+
+
         text.setText(data.get(position).getTitle());
-        
-//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-//        final String dateString = formatter.format(data.get(position).getUploadDate());
-//        textDate.setText(activity.getResources().getString(R.string.launch)+": "+dateString);
+
         
         if(data.get(position).getThumbnail().equals("") || data.get(position).getThumbnail() == null){
         	image.setImageResource(R.drawable.app_icon);

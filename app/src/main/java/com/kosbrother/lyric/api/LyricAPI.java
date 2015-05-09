@@ -164,7 +164,7 @@ public class LyricAPI {
             search.setType("video");
 
             
-            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url),nextPageToken");
             search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
             if(page != 0)
                 search.setPageToken(nextPageToken);

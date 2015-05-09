@@ -45,52 +45,6 @@
 				  android:textColor="#383938"
 				  />	    
 		    </RelativeLayout>
-		    <RelativeLayout 
-		        android:layout_width="fill_parent"
-				android:layout_height="15dp"
-				android:orientation="horizontal"
-				android:layout_marginLeft="10dp"
-			  	android:layout_marginRight="10dp"
-		        >
-		        <TextView android:id="@+id/text_list_duration"
-			      android:layout_width="wrap_content"
-				  android:layout_height="15dp"
-			      android:text="Time: 4:30"
-		       	  android:textSize="12dp"
-		       	  android:textColor="#898989"	       	 
-			        />
-			    <TextView android:id="@+id/text_list_date"
-			      android:layout_width="wrap_content"
-				  android:layout_height="15dp"
-			      android:text="Launch: 2012/12/06"
-		       	  android:textSize="12dp"
-		       	  android:textColor="#898989"
-		       	  android:layout_alignParentRight="true"
-			        />	    
-		    </RelativeLayout>
-		    <RelativeLayout 
-		        android:layout_width="fill_parent"
-				android:layout_height="15dp"
-				android:orientation="horizontal"
-				android:layout_marginLeft="10dp"
-			  	android:layout_marginRight="10dp"
-		        >
-		        <TextView android:id="@+id/text_list_views"
-			      android:layout_width="wrap_content"
-				  android:layout_height="15dp"
-			      android:text="7668 Views"
-		       	  android:textSize="12dp"
-		       	  android:textColor="#898989"	       	 
-			        />
-			    <TextView android:id="@+id/text_list_like"
-			      android:layout_width="wrap_content"
-				  android:layout_height="15dp"
-			      android:text="566 Likes"
-		       	  android:textSize="12dp"
-		       	  android:textColor="#898989"
-		       	  android:layout_alignParentRight="true"
-			        />
-		    </RelativeLayout>	    
 	    </LinearLayout>
     </LinearLayout>
 </LinearLayout>
