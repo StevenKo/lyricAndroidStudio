@@ -1,32 +1,23 @@
 package com.taiwan.imageload;
 
-import static android.provider.BaseColumns._ID;
-
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Locale;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.kosbrother.lyric.R;
 import com.kosbrother.lyric.entity.YoutubeVideo;
 
-import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class ListVideoAdapter extends BaseAdapter {
 
@@ -108,9 +99,9 @@ public class ListVideoAdapter extends BaseAdapter {
         
         text.setText(data.get(position).getTitle());
         
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-        final String dateString = formatter.format(data.get(position).getUploadDate()); 
-        textDate.setText(activity.getResources().getString(R.string.launch)+": "+dateString);
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+//        final String dateString = formatter.format(data.get(position).getUploadDate());
+//        textDate.setText(activity.getResources().getString(R.string.launch)+": "+dateString);
         
         if(data.get(position).getThumbnail().equals("") || data.get(position).getThumbnail() == null){
         	image.setImageResource(R.drawable.app_icon);

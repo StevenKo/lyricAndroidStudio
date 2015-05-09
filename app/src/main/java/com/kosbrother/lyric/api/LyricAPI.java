@@ -1,5 +1,32 @@
 package com.kosbrother.lyric.api;
 
+import android.util.Log;
+
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
+import com.kosbrother.lyric.entity.Album;
+import com.kosbrother.lyric.entity.Singer;
+import com.kosbrother.lyric.entity.SingerCategory;
+import com.kosbrother.lyric.entity.SingerNews;
+import com.kosbrother.lyric.entity.SingerSearchWay;
+import com.kosbrother.lyric.entity.SingerSearchWayItem;
+import com.kosbrother.lyric.entity.Song;
+import com.kosbrother.lyric.entity.Video;
+import com.kosbrother.lyric.entity.YoutubeVideo;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,28 +40,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.util.Log;
-
-import com.kosbrother.lyric.entity.Album;
-import com.kosbrother.lyric.entity.Singer;
-import com.kosbrother.lyric.entity.SingerCategory;
-import com.kosbrother.lyric.entity.SingerNews;
-import com.kosbrother.lyric.entity.SingerSearchWay;
-import com.kosbrother.lyric.entity.SingerSearchWayItem;
-import com.kosbrother.lyric.entity.Song;
-import com.kosbrother.lyric.entity.Video;
-import com.kosbrother.lyric.entity.YoutubeVideo;
 
 public class LyricAPI {
     final static String         HOST  = "http://106.187.102.167";
@@ -120,79 +127,81 @@ public class LyricAPI {
         }
     }
 
+    private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
+
+
+    /**
+     * Define a global instance of a Youtube object, which will be used
+     * to make YouTube Data API requests.
+     */
+    private static YouTube youtube;
+    private static String nextPageToken;
+
     public static ArrayList<YoutubeVideo> getYoutubeVideos(String query, int page) {
         ArrayList<YoutubeVideo> videos = new ArrayList<YoutubeVideo>();
-        if (query.indexOf("(") != -1) {
-            String name2 = query.substring(0, query.indexOf("("));
-            query = name2;
-        }
+
         try {
-            query = URLEncoder.encode(query, "utf-8");
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-            return null;
-        }
 
-        String url = "http://gdata.youtube.com/feeds/api/videos?q=" + query + "&start-index=" + (page * 12 + 1)
-                + "&max-results=12&v=2&alt=json&fields=entry[link/@rel='http://gdata.youtube.com/schemas/2007%23mobile']";
-        String message = getMessageFromServer("GET", null, null, url);
+            youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new com.google.api.client.http.HttpRequestInitializer() {
+                @Override
+                public void initialize(com.google.api.client.http.HttpRequest request) throws IOException {
 
-        if (message == null) {
-            return null;
-        } else {
-            try {
-                JSONObject object = new JSONObject(message);
-                JSONObject feedObject = object.getJSONObject("feed");
-                JSONArray videoArray = feedObject.getJSONArray("entry");
-                for (int i = 0; i < videoArray.length(); i++) {
+                }
+            }).setApplicationName("youtube-cmdline-search-sample").build();
 
+
+            // Prompt the user to enter a query term.
+            String queryTerm = query;
+
+            YouTube.Search.List search = youtube.search().list("id,snippet");
+
+
+            String apiKey = "AIzaSyAWK4Ll-OMAy6c13xzR0zZsvMB05L7RNSU";
+            search.setKey(apiKey);
+            search.setQ(queryTerm);
+
+
+            search.setType("video");
+
+            
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
+            if(page != 0)
+                search.setPageToken(nextPageToken);
+
+            SearchListResponse searchResponse = search.execute();
+            nextPageToken = searchResponse.getNextPageToken();
+
+            List<SearchResult> searchResultList = searchResponse.getItems();
+            if (searchResponse != null) {
+                for(int i = 0; i < searchResultList.size(); i++){
                     String title = "null";
                     String link = "null";
                     String thumbnail = "null";
 
-                    try {
-                        title = videoArray.getJSONObject(i).getJSONObject("title").getString("$t");
-                        link = videoArray.getJSONObject(i).getJSONArray("link").getJSONObject(0).getString("href");
-                        thumbnail = videoArray.getJSONObject(i).getJSONObject("media$group").getJSONArray("media$thumbnail").getJSONObject(0).getString("url");
-                    } catch (Exception e) {
-
-                    }
-
-                    int duration = 0;
-                    int viewCount = 0;
-
-                    try {
-                        duration = videoArray.getJSONObject(i).getJSONObject("media$group").getJSONObject("yt$duration").getInt("seconds");
-                        viewCount = videoArray.getJSONObject(i).getJSONObject("yt$statistics").getInt("viewCount");
-                    } catch (Exception e) {
-
-                    }
-
-                    int likes = -1;
-
-                    try {
-                        likes = videoArray.getJSONObject(i).getJSONObject("yt$rating").getInt("numLikes");
-                    } catch (Exception e) {
-                    }
-
-                    // int dislikes = videoArray.getJSONObject(i).getJSONObject("yt$rating").getInt("numDislikes");
+                    link = "https://www.youtube.com/watch?v=" + searchResultList.get(i).getId().getVideoId();
+                    title = searchResultList.get(i).getSnippet().getTitle();
+                    thumbnail = searchResultList.get(i).getSnippet().getThumbnails().getDefault().getUrl();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
                     Date uploadTime = null;
                     try {
-                        uploadTime = sdf.parse(videoArray.getJSONObject(i).getJSONObject("published").getString("$t"));
+                        uploadTime = sdf.parse(String.valueOf(searchResultList.get(i).getSnippet().getPublishedAt()));
                     } catch (ParseException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                    YoutubeVideo video = new YoutubeVideo(title, link, thumbnail, uploadTime, viewCount, duration, likes);
+                    YoutubeVideo video = new YoutubeVideo(title, link, thumbnail, uploadTime, 1, 2, 3);
                     videos.add(video);
                 }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return null;
             }
+        } catch (GoogleJsonResponseException e) {
+            System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
+                    + e.getDetails().getMessage());
+        } catch (IOException e) {
+            System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
+        } catch (Throwable t) {
+            t.printStackTrace();
         }
+
         return videos;
 
     }
