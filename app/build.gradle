@@ -8,8 +8,8 @@ android {
         applicationId "com.kosbrother.lyric"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 23
+        versionName "1.9.10"
     }
     buildTypes {
         release {
